@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>br.ptbrcraft</groupId>
+    <artifactId>ptbr-patch-tool</artifactId>
+    <version>1.1.0</version>
+    <name>PATCH 1.1.0 PTBRCRAFT</name>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>bundle-patch-resources</id>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <target>
+                                <mkdir dir="${project.build.outputDirectory}/patch/mods"/>
+                                <mkdir dir="${project.build.outputDirectory}/patch"/>
+                                <copy todir="${project.build.outputDirectory}/patch/mods" overwrite="true">
+                                    <fileset dir="${project.basedir}/../../client/mods">
+                                        <include name="Just-Enough-Botania-1.20.1-v0.2.1.jar"/>
+                                        <include name="create_netherless-2.0.0-1.20.1.jar"/>
+                                        <include name="create-food-1.20.1-1.1.13a-forge.jar"/>
+                                        <include name="create_central_kitchen-1.20.1-for-create-6.0.4-1.4.1.jar"/>
+                                        <include name="more-immersive-wires-1.20.1-1.1.4.jar"/>
+                                        <include name="balm-forge-1.20.1-7.3.38-all.jar"/>
+                                        <include name="inventoryessentials-forge-1.20.1-8.2.15.jar"/>
+                                        <include name="mechanicalbotania-1.0.2.jar"/>
+                                        <include name="ImmersiveEngineering-1.20.1-10.1.0-171.jar"/>
+                                        <include name="Botania-1.20.1-446-FORGE.jar"/>
+                                        <include name="txnilib-forge-1.0.24-1.20.1.jar"/>
+                                        <include name="OctoLib-FORGE-0.4.2+1.20.1.jar"/>
+                                        <include name="ImmersiveUI-FORGE-0.3.0.jar"/>
+                                        <include name="OverflowingBars-v8.0.1-1.20.1-Forge.jar"/>
+                                        <include name="immersivearmorhud-forge-1.0.1-1.20.1.jar"/>
+                                        <include name="Quick Skin - Forge - 1.20.1-2.6.2.4.jar"/>
+                                    </fileset>
+                                </copy>
+                                <zip destfile="${project.build.outputDirectory}/patch/fancymenu.zip"
+                                     basedir="${project.basedir}/../../client/config/fancymenu"/>
+                                <copy file="${project.basedir}/../../client/config/fancymenu/assets/ico.png"
+                                      tofile="${project.build.outputDirectory}/app-icon.png"
+                                      overwrite="true"/>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>br.ptbrcraft.patch.PatchApplication</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

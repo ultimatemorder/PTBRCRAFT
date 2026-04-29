@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <mkdir dir="C:\games\server-ptbr\ferramentas\ptbr-patch-tool\target\classes/patch/mods" />
+    <mkdir dir="C:\games\server-ptbr\ferramentas\ptbr-patch-tool\target\classes/patch" />
+    <copy todir="C:\games\server-ptbr\ferramentas\ptbr-patch-tool\target\classes/patch/mods" overwrite="true">
+      <fileset dir="C:\games\server-ptbr\ferramentas\ptbr-patch-tool/../../client/mods">
+        <include name="Just-Enough-Botania-1.20.1-v0.2.1.jar" />
+        <include name="create_netherless-2.0.0-1.20.1.jar" />
+        <include name="create-food-1.20.1-1.1.13a-forge.jar" />
+        <include name="create_central_kitchen-1.20.1-for-create-6.0.4-1.4.1.jar" />
+        <include name="more-immersive-wires-1.20.1-1.1.4.jar" />
+        <include name="balm-forge-1.20.1-7.3.38-all.jar" />
+        <include name="inventoryessentials-forge-1.20.1-8.2.15.jar" />
+        <include name="mechanicalbotania-1.0.2.jar" />
+        <include name="ImmersiveEngineering-1.20.1-10.1.0-171.jar" />
+        <include name="Botania-1.20.1-446-FORGE.jar" />
+        <include name="txnilib-forge-1.0.24-1.20.1.jar" />
+        <include name="OctoLib-FORGE-0.4.2+1.20.1.jar" />
+        <include name="ImmersiveUI-FORGE-0.3.0.jar" />
+        <include name="OverflowingBars-v8.0.1-1.20.1-Forge.jar" />
+        <include name="immersivearmorhud-forge-1.0.1-1.20.1.jar" />
+        <include name="Quick Skin - Forge - 1.20.1-2.6.2.4.jar" />
+      </fileset>
+    </copy>
+    <zip basedir="C:\games\server-ptbr\ferramentas\ptbr-patch-tool/../../client/config/fancymenu" destfile="C:\games\server-ptbr\ferramentas\ptbr-patch-tool\target\classes/patch/fancymenu.zip" />
+    <copy file="C:\games\server-ptbr\ferramentas\ptbr-patch-tool/../../client/config/fancymenu/assets/ico.png" tofile="C:\games\server-ptbr\ferramentas\ptbr-patch-tool\target\classes/app-icon.png" overwrite="true" />
+  </target>
+</project>
